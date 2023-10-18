@@ -4,49 +4,47 @@ import edu.princeton.cs.introcs.StdDraw;
 
 public class Methods {
 
-	/**
-	 * Compute the (Euclidean) distance between two points.
-	 *
-	 * @param x1 x-coordinate of a point
-	 * @param y1 y-coordinate of a point
-	 * @param x2 x-coordinate of another point
-	 * @param y2 y-coordinate of another point
-	 * @return the Euclidean distance between (x1,y1) and (x2,y2)
-	 */
-	public static double distanceBetween(double x1, double y1, double x2, double y2) {
-		double distance = 0;
-		// FIXME: Hint use Math methods (e.g. Math.sqrt) to compute the distance
-		
-		return distance;
-	}
 
-	/**
-	 * Draw a bull's eye at the given location with the given radius.
-	 *
-	 * @param x      the x coordinate of the center of the bull's eye
-	 * @param y      the y coordinate of the center of the bull's eye
-	 * @param radius the radius of the bull's eye
-	 */
-	public static void drawBullsEye(double x, double y, double radius) {
-		StdDraw.setPenColor(StdDraw.BLACK);
-		StdDraw.filledCircle(x, y, radius);
+	    /**
+	     * Calculates the distance between two points (x1, y1) and (x2, y2).
+	     *
+	     * @param x1 the x-coordinate of the first point.
+	     * @param y1 the y-coordinate of the first point.
+	     * @param x2 the x-coordinate of the second point.
+	     * @param y2 the y-coordinate of the second point.
+	     * @return the distance between the two points.
+	     */
+	    public static double distanceBetween(double x1, double y1, double x2, double y2) {
+	        return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+	    }
+	    
 
-		// TODO: Draw the remaining rings of the bull's eye
-		// Blue ring with 3.0/4.0 the radius
-		// suggested rgb values: 0, 109, 219
 
-		
 
-		// Red ring with 1.0/2.0 the radius
-		// suggested rgb values: 146, 0, 0
+		/**
+		 * Draw a bull's eye at the given location with the given radius.
+		 *
+		 * @param x      the x coordinate of the center of the bull's eye
+		 * @param y      the y coordinate of the center of the bull's eye
+		 * @param radius the radius of the bull's eye
+		 */
+		public static void drawBullsEye(double x, double y, double radius) {
+		    // Black outermost circle
+		    StdDraw.setPenColor(StdDraw.BLACK);
+		    StdDraw.filledCircle(x, y, radius);
 
-		
+		    // Blue ring with 3.0/4.0 the radius
+		    StdDraw.setPenColor(0, 109, 219);
+		    StdDraw.filledCircle(x, y, 3.0/4.0 * radius);
 
-		// Yellow ring with 1.0/4.0 the radius
-		// suggested rgb values: 255, 255, 109
+		    // Red ring with 1.0/2.0 the radius
+		    StdDraw.setPenColor(146, 0, 0);
+		    StdDraw.filledCircle(x, y, 1.0/2.0 * radius);
 
-		
-	}
+		    // Yellow innermost ring with 1.0/4.0 the radius
+		    StdDraw.setPenColor(255, 255, 109);
+		    StdDraw.filledCircle(x, y, 1.0/4.0 * radius);
+		}
 
 	/**
 	 * Return a new String which is the original source String with all occurrences
